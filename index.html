@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="stylesheet" href="style.css" />
+  <title>Login</title>
+</head>
+<body>
+
+  <div class="page login-page">
+    <h2>Login</h2>
+    <form action="resume page.html" name="loginForm">
+      <div class="group">
+        <label for="loginUsername" class="label">Username</label>
+        <input type="text" id="loginUsername" name="loginUsername" class="input" required>
+      </div>
+
+      <div class="group">
+        <label for="loginPassword" class="label">Password</label>
+        <input type="password" id="loginPassword" name="loginPassword" class="input" required>
+      </div>
+
+      <div class="group">
+        <input id="check" type="checkbox" class="check" checked>
+        <label for="check" class="label"><span class="icon"></span> Keep me Signed in</label>
+      </div>
+
+      <div class="group">
+        <input type="submit" class="button" value="Login">
+      </div>
+  
+      <p>Don't have an account? <a href="registration page.html" class="signup-button">Sign Up</a></p>
+      <button class="view-cv-button"><a href="resume page.html">View CV</a></button>
+    </form>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        var loginForm = document.forms["loginForm"];
+
+        loginForm.addEventListener("submit", function (event) {
+          if (!validateLoginForm()) {
+            event.preventDefault();
+          }
+        });
+
+        function validateLoginForm() {
+          var username = loginForm["loginUsername"].value;
+          var password = loginForm["loginPassword"].value;
+
+       
+          var emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+          if (!emailPattern.test(username)) {
+            alert("Please enter a valid email address (e.g., abc@gmail.com)");
+            return false;
+          }
+
+          var passwordPattern = /^(?=.*[0-9].*[0-9])(?=.*[a-zA-Z].*[a-zA-Z].*[a-zA-Z].*[a-zA-Z].*[a-zA-Z].*[a-zA-Z])/;
+          if (!passwordPattern.test(password)) {
+            alert("Password should contain at least 2 numbers and 6 alphabets");
+            return false;
+          }
+
+         
+          return true;
+        }
+      });
+    </script>
+  </div>
+</body>
+</html>
+
